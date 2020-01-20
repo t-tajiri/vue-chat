@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1 data-test="message">{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -33,12 +33,22 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { createComponent, ref } from '@vue/composition-api'
 
-@Component
-export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
+type Props = {
+  msg: string
 }
+
+export default createComponent({
+  props: {
+    msg: String
+  },
+  setup (props: Props) {
+    const msg = ref<string>(props.msg)
+
+    return { msg }
+  }
+})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
