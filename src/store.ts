@@ -10,13 +10,15 @@ const vuexLocal = new VuexPersistence({
 
 export default new Vuex.Store({
   state: {
-
+    count: 100
   },
   mutations: {
 
   },
   actions: {
+    login ({ commit }) {
 
+    }
   },
   plugins: [vuexLocal.plugin]
 })
