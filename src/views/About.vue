@@ -1,7 +1,6 @@
 <template>
-  <div class="about">
+  <div>
     <h1>This is an about page</h1>
-    <span>{{ count }}</span>
   </div>
 </template>
 
@@ -10,9 +9,6 @@ import { createComponent, ref } from '@vue/composition-api'
 
 export default createComponent({
   setup (props, { root }) {
-    let count = root.$store.state
-
-    return { count }
   }
 })
 </script>
