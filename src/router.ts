@@ -11,9 +11,9 @@ const routes: RouteConfig[] = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+    path: '/chat',
+    name: 'chat',
+    component: () => import(/* webpackChunkName: "about" */ './views/Chat.vue')
   }
 ]
 

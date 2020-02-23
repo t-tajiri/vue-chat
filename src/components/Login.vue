@@ -23,7 +23,7 @@ export default createComponent({
       }
 
       root.$store.dispatch('login', username.value)
-      root.$router.push('about')
+      root.$router.push('chat')
     }
 
     return { username, invalid, onSubmit }
