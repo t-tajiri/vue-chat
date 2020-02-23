@@ -1,7 +1,7 @@
 <template>
   <div>
-    <input v-model="username" placeholder="username">
-    <button @click="onSubmit">Login</button>
+    <input v-model="username" placeholder="username" data-test="username">
+    <button @click="onSubmit" data-test="login">Login</button>
     <p v-if="invalid">
       input valid username.
     </p>
@@ -30,7 +30,7 @@ export default createComponent({
   }
 })
 
-function validate (username: string | undefined) {
-  return !(username == null || username.length > 1 || username.match(/^[A-Za-z0-9]*$/))
+function validate (username: string) {
+  return username != null && username.length > 1 && /^[A-Za-z0-9]*$/.test(username)
 }
 </script>
