@@ -30,7 +30,7 @@ export default createComponent({
   }
 })
 
-function validate (username: string) {
+function validate (username: string | undefined) {
   return username != null && username.length > 1 && /^[A-Za-z0-9]*$/.test(username)
 }
 </script>
