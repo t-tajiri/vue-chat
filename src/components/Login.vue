@@ -1,7 +1,16 @@
 <template>
   <div>
-    <input v-model="username" placeholder="username" data-test="username">
-    <button @click="onSubmit" data-test="login">Login</button>
+    <input
+      v-model="username"
+      placeholder="username"
+      data-test="username"
+    >
+    <button
+      @click="onSubmit"
+      data-test="login"
+    >
+      Login
+    </button>
     <p v-if="invalid">
       input valid username.
     </p>
