@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex, { MutationTree, ActionTree, GetterTree } from 'vuex'
 import VuexPersistence from 'vuex-persist'
 import Chatkit from '@/chatkit.js'
-import { State, Room } from '@/store/types'
+import { State, Room, Message } from '@/store/types'
 
 Vue.use(Vuex)
 
@@ -13,7 +13,8 @@ const vuexLocal = new VuexPersistence({
 let state: State = {
   username: '',
   name: '',
-  rooms: [{ id: '', name: '' }]
+  rooms: [],
+  messages: []
 }
 
 const getters: GetterTree<State, any> = {
@@ -22,6 +23,9 @@ const getters: GetterTree<State, any> = {
   },
   getRooms (state: State) {
     return state.rooms
+  },
+  getMessages (state: State) {
+    return state.messages
   }
 }
 
@@ -32,6 +36,9 @@ const mutations: MutationTree<State> = {
   },
   setRooms (state, rooms: Array<Room>) {
     state.rooms = rooms
+  },
+  addMessage (state, message: Message) {
+    state.messages.push(message)
   }
 }
 
@@ -46,8 +53,16 @@ const actions: ActionTree<State, any> = {
       id: room.id,
       name: room.name
     }))
-
     commit('setRooms', rooms)
+
+    // TODO
+    const activeRoom = rooms[0]
+
+    await Chatkit.subscribeToRoom(activeRoom.id)
+  },
+  async sendMessage (ctx, message: string) {
+    const messageId = await Chatkit.sendMessage(message)
+    return messageId
   }
 }
 
