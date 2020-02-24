@@ -12,10 +12,10 @@
 </template>
 
 <script lang="ts">
-import { createComponent, ref } from '@vue/composition-api'
+import { defineComponent, ref } from '@vue/composition-api'
 import { Room } from '@/store/types'
 
-export default createComponent({
+export default defineComponent({
   setup (props, { root }) {
     let rooms = ref<Array<Room>>()
     rooms = root.$store.getters.getRooms

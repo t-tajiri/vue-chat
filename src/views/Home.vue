@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts">
-import { createComponent } from '@vue/composition-api'
+import { defineComponent } from '@vue/composition-api'
 import Login from '@/components/Login.vue'
 
-export default createComponent({
+export default defineComponent({
   components: { Login }
 })
 </script>

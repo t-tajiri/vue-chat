@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@pusher/chatkit-client": "^1.13.4",
-    "@vue/composition-api": "^0.3.4",
+    "@vue/composition-api": "^0.4.0",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
