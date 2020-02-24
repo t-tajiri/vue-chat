@@ -1,5 +1,5 @@
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client'
-import store from '@/store'
+import { useStore } from '@/store'
 
 const INSTANCE_LOCATOR = process.env.VUE_APP_INSTANCE_LOCATOR
 const TOKEN_PROVIDER = process.env.VUE_APP_TOKEN_PROVIDER
@@ -19,6 +19,8 @@ async function connectUser (userId) {
 }
 
 async function subscribeToRoom (roomId) {
+  const store = useStore()
+
   activeRoom = await currentUser.subscribeToRoomMultipart({
     roomId,
     hooks: {

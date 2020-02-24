@@ -69,10 +69,14 @@ const actions: ActionTree<State, any> = {
 // never refered by other, so define as any.
 const plugins: any = [vuexLocal.plugin]
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state,
   getters,
   mutations,
   actions,
   plugins
 })
+
+export function useStore () {
+  return store
+}

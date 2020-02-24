@@ -32,18 +32,21 @@
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api'
 import { Room } from '@/store/types'
+import { useStore } from '@/store'
 
 export default defineComponent({
   setup (props, { root }) {
+    const store = useStore()
+
     let rooms = ref<Array<Room>>()
     let messages = ref<Array<string>>()
     let message = ''
 
-    messages.value = root.$store.getters.getMessages
-    rooms.value = root.$store.getters.getRooms
+    messages.value = store.getters.getMessages
+    rooms.value = store.getters.getRooms
 
     async function onSend () {
-      const result = await root.$store.dispatch('sendMessage', message)
+      const result = await store.dispatch('sendMessage', message)
       if (result) {
         message = ''
       }

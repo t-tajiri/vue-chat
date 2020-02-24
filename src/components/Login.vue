@@ -19,9 +19,12 @@
 
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api'
+import { useStore } from '@/store'
 
 export default defineComponent({
   setup (props, { root }) {
+    const store = useStore()
+
     let username = ref<string>()
     let invalid = ref<Boolean>(false)
 
@@ -31,7 +34,7 @@ export default defineComponent({
         return
       }
 
-      root.$store.dispatch('login', username.value)
+      store.dispatch('login', username.value)
       root.$router.push('chat')
     }
 
