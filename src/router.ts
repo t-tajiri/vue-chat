@@ -7,17 +7,16 @@ import Chat from '@/views/Chat.vue'
 
 Vue.use(Router)
 
-// workaround define as VueConstructor<Vue>
 const routes: RouteConfig[] = [
   {
     path: '/',
     name: 'home',
-    component: Home as VueConstructor<Vue>
+    component: Home
   },
   {
     path: '/chat',
     name: 'chat',
-    component: Chat as VueConstructor<Vue>
+    component: Chat
   }
 ]
 
