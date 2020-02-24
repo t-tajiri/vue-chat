@@ -11,6 +11,7 @@
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "sourceMap": true,
+    "outDir": "dist",
     "baseUrl": ".",
     "types": [
       "webpack-env",
