@@ -40,15 +40,15 @@ export default defineComponent({
 
     let rooms = ref<Array<Room>>()
     let messages = ref<Array<string>>()
-    let message = ''
+    let message = ref<string>()
 
     messages.value = store.getters.getMessages
     rooms.value = store.getters.getRooms
 
     async function onSend () {
-      const result = await store.dispatch('sendMessage', message)
+      const result = await store.dispatch('sendMessage', message.value)
       if (result) {
-        message = ''
+        message.value = ''
       }
     }
 
