@@ -2,7 +2,8 @@ export interface State {
   username: string,
   name: string,
   rooms: Array<Room | null>,
-  messages: Array<Message | null>
+  messages: Array<Message | null>,
+  activeRoom: Room | null
 }
 
 export interface Room {

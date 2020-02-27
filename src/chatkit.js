@@ -34,6 +34,8 @@ async function subscribeToRoom (roomId) {
       }
     }
   })
+
+  store.commit('setActiveRoom', activeRoom)
 }
 
 async function sendMessage (text) {

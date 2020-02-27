@@ -14,7 +14,8 @@ let state: State = {
   username: '',
   name: '',
   rooms: [],
-  messages: []
+  messages: [],
+  activeRoom: null
 }
 
 const getters: GetterTree<State, any> = {
@@ -39,11 +40,14 @@ const mutations: MutationTree<State> = {
   },
   addMessage (state, message: Message) {
     state.messages.push(message)
+  },
+  setActiveRoom (state, activeRoom: Room) {
+    state.activeRoom = activeRoom
   }
 }
 
 const actions: ActionTree<State, any> = {
-  async login ({ commit }, userId: string) {
+  async login ({ commit, state }, userId: string) {
     const currentUser = await Chatkit.connectUser(userId)
 
     commit('setUser', { username: currentUser.name, name: currentUser.name })
@@ -55,8 +59,7 @@ const actions: ActionTree<State, any> = {
     }))
     commit('setRooms', rooms)
 
-    // TODO
-    const activeRoom = rooms[0]
+    const activeRoom = state.activeRoom || rooms[0]
 
     await Chatkit.subscribeToRoom(activeRoom.id)
   },
