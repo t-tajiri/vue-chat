@@ -1,9 +1,14 @@
 export interface State {
-  username: string,
-  name: string,
-  rooms: Array<Room | null>,
-  messages: Array<Message | null>,
-  activeRoom: Room | null
+  user?: User
+  rooms: Array<Room>,
+  messages: Array<Message>,
+  activeRoom?: Room,
+  reconnect: boolean
+}
+
+export interface User {
+  id: string,
+  name: string
 }
 
 export interface Room {

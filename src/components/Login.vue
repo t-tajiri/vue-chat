@@ -28,6 +28,14 @@ export default defineComponent({
     let username = ref<string>()
     let invalid = ref<Boolean>(false)
 
+    onMount()
+
+    function onMount () {
+      if (store.getters.getUser) {
+        root.$router.push('chat')
+      }
+    }
+
     function onSubmit () {
       if (!validate(username.value)) {
         invalid.value = true

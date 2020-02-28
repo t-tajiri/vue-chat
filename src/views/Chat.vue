@@ -31,7 +31,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api'
-import { Room } from '@/store/types'
+import { Room, User } from '@/store/types'
 import { useStore } from '@/store'
 
 export default defineComponent({
@@ -44,6 +44,22 @@ export default defineComponent({
 
     messages.value = store.getters.getMessages
     rooms.value = store.getters.getRooms
+
+    onMount()
+
+    function onMount () {
+      const loggedUser = store.getters.getUser
+      window.addEventListener('beforeunload', function () { unload(loggedUser) })
+      if (store.getters.getReconnect) {
+        store.dispatch('login', loggedUser.id)
+      }
+    }
+
+    function unload (loggedUser: User) {
+      if (loggedUser) {
+        store.commit('setReconnect', true)
+      }
+    }
 
     async function onSend () {
       const result = await store.dispatch('sendMessage', message.value)
