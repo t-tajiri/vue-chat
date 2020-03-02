@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import VueCompositionApi from '@vue/composition-api'
 
-import '@/assets/tailwind.css'
+import 'milligram'
 
 Vue.config.productionTip = false
 
